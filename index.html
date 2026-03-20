@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Ponkesdes Landungsari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+        .bg-toska-dark { background-color: #006969; }
+        .text-toska-dark { color: #006969; }
+        .border-toska { border-color: #006969; }
+        input:focus, select:focus, textarea:focus { border-color: #006969 !important; outline: none; }
+        .shadow-soft { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+        /* Custom radio styling untuk pilihan layanan */
+        .layanan-card input:checked + div { border-color: #006969; background-color: #f0fdfa; }
+        .layanan-card input:checked + div svg { color: #006969; }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <nav class="flex items-center justify-between px-6 md:px-12 py-4 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+            <div class="bg-toska-dark p-2 rounded-lg text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800">Ponkes<span class="text-toska-dark">des</span> Landungsari</span>
+        </div>
+        <button class="text-xs font-semibold bg-slate-50 px-4 py-2 rounded-full border border-slate-200">Pendaftaran Online</button>
+    </nav>
+
+    <section class="text-center pt-16 pb-12 px-4">
+        <span class="bg-teal-50 text-toska-dark text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest border border-teal-100 italic">✦ Pelayanan 24 Jam</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mt-6 leading-tight">Daftar Pasien<br><span class="italic text-toska-dark">Lebih Mudah & Cepat</span></h1>
+        <p class="text-slate-500 text-sm mt-6 max-w-lg mx-auto leading-relaxed">Isi formulir di bawah ini untuk mendaftarkan diri sebagai pasien. Data Anda akan langsung tercatat di sistem kami secara real-time.</p>
+        
+        <div class="flex flex-wrap justify-center gap-4 mt-10">
+            <div class="bg-white p-4 rounded-2xl flex items-center gap-3 w-44 shadow-soft border border-slate-100">
+                <div class="bg-teal-50 p-2 rounded-lg text-toska-dark">🏷️</div>
+                <div class="text-left"><p class="text-[10px] text-slate-400 font-bold">Berbagai</p><p class="text-[9px] text-slate-500">Layanan Tersedia</p></div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl flex items-center gap-3 w-44 shadow-soft border border-slate-100">
+                <div class="bg-teal-50 p-2 rounded-lg text-toska-dark">👩‍⚕️</div>
+                <div class="text-left"><p class="text-[10px] text-slate-400 font-bold">24/7</p><p class="text-[9px] text-slate-500">Siap Melayani</p></div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl flex items-center gap-3 w-44 shadow-soft border border-slate-100">
+                <div class="bg-teal-50 p-2 rounded-lg text-toska-dark">⚡</div>
+                <div class="text-left"><p class="text-[10px] text-slate-400 font-bold">< 5 menit</p><p class="text-[9px] text-slate-500">Proses Daftar</p></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-3xl mx-auto px-4 pb-24">
+        <form id="pendaftaranForm" class="bg-white rounded-[32px] shadow-2xl overflow-hidden border border-slate-100">
+            <div class="bg-toska-dark p-8 flex items-center gap-4">
+                <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-white font-bold text-lg">Formulir Pendaftaran Pasien</h2>
+                    <p class="text-teal-100 text-[11px]">Lengkapi semua data di bawah ini dengan benar</p>
+                </div>
+            </div>
+
+            <div class="p-8 space-y-10">
+                <section>
+                    <h3 class="text-[10px] font-black text-slate-300 uppercase tracking-[2px] mb-6 border-b pb-2">Data Identitas Pasien</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" name="nama" placeholder="Masukkan nama lengkap" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">NIK <span class="text-red-500">*</span></label>
+                            <input type="number" id="nik" name="nik" placeholder="16 digit NIK KTP" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">No. HP / WhatsApp <span class="text-red-500">*</span></label>
+                            <input type="tel" id="hp" name="hp" placeholder="Contoh: 08123456789" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">Tanggal Lahir <span class="text-red-500">*</span></label>
+                            <input type="date" name="tgl_lahir" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm transition-all uppercase">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">Jenis Kelamin <span class="text-red-500">*</span></label>
+                            <select name="gender" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm appearance-none">
+                                <option value="">Pilih jenis kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">Kota / Domisili <span class="text-red-500">*</span></label>
+                            <input type="text" name="domisili" placeholder="Kota atau kabupaten domisili" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm transition-all">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-[10px] font-black text-slate-300 uppercase tracking-[2px] mb-6 border-b pb-2">Pilih Layanan</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <label class="layanan-card cursor-pointer group">
+                            <input type="radio" name="layanan" value="Umum" class="hidden" required>
+                            <div class="border-2 border-slate-100 rounded-2xl p-5 text-center transition-all group-hover:border-teal-200">
+                                <div class="bg-teal-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 text-toska-dark">🩺</div>
+                                <p class="text-xs font-bold">Umum</p>
+                                <p class="text-[9px] text-slate-400 mt-1">Pemeriksaan kesehatan umum</p>
+                            </div>
+                        </label>
+                        <label class="layanan-card cursor-pointer group">
+                            <input type="radio" name="layanan" value="Imunisasi" class="hidden">
+                            <div class="border-2 border-slate-100 rounded-2xl p-5 text-center transition-all group-hover:border-teal-200">
+                                <div class="bg-teal-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 text-toska-dark">💉</div>
+                                <p class="text-xs font-bold">Imunisasi</p>
+                                <p class="text-[9px] text-slate-400 mt-1">Vaksinasi & Imunisasi</p>
+                            </div>
+                        </label>
+                        <label class="layanan-card cursor-pointer group">
+                            <input type="radio" name="layanan" value="Konsultasi" class="hidden">
+                            <div class="border-2 border-slate-100 rounded-2xl p-5 text-center transition-all group-hover:border-teal-200">
+                                <div class="bg-teal-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 text-toska-dark">💬</div>
+                                <p class="text-xs font-bold">Konsultasi</p>
+                                <p class="text-[9px] text-slate-400 mt-1">Konsultasi dengan bidan</p>
+                            </div>
+                        </label>
+                        <label class="layanan-card cursor-pointer group">
+                            <input type="radio" name="layanan" value="Cek Gula Darah" class="hidden">
+                            <div class="border-2 border-slate-100 rounded-2xl p-5 text-center transition-all group-hover:border-teal-200">
+                                <div class="bg-teal-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 text-toska-dark">🩸</div>
+                                <p class="text-xs font-bold">Cek Gula Darah</p>
+                                <p class="text-[9px] text-slate-400 mt-1">Pemeriksaan kadar gula</p>
+                            </div>
+                        </label>
+                        <label class="layanan-card cursor-pointer group">
+                            <input type="radio" name="layanan" value="Cek Asam Urat" class="hidden">
+                            <div class="border-2 border-slate-100 rounded-2xl p-5 text-center transition-all group-hover:border-teal-200">
+                                <div class="bg-teal-50 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 text-toska-dark">🔬</div>
+                                <p class="text-xs font-bold">Cek Asam Urat</p>
+                                <p class="text-[9px] text-slate-400 mt-1">Pemeriksaan kadar asam urat</p>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-[10px] font-black text-slate-300 uppercase tracking-[2px] mb-6 border-b pb-2">Jadwal Kunjungan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">Tanggal Kunjungan <span class="text-red-500">*</span></label>
+                            <input type="date" name="tgl_kunjungan" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">Sesi Kunjungan <span class="text-red-500">*</span></label>
+                            <select name="sesi" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm appearance-none">
+                                <option value="">Pilih sesi</option>
+                                <option value="Pagi (08:00 - 11:00)">Pagi (08:00 - 11:00)</option>
+                                <option value="Siang (13:00 - 15:00)">Siang (13:00 - 15:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-[10px] font-black text-slate-300 uppercase tracking-[2px] mb-6 border-b pb-2">Keluhan & Catatan</h3>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">Keluhan / Catatan Tambahan</label>
+                    <textarea name="keluhan" rows="4" placeholder="Ceritakan keluhan utama Anda (opsional)..." class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm transition-all"></textarea>
+                </section>
+
+                <div class="bg-teal-50/50 p-4 rounded-2xl border border-teal-100 flex items-start gap-3">
+                    <input type="checkbox" required class="mt-1 h-4 w-4 rounded border-teal-300 text-toska-dark focus:ring-toska-dark">
+                    <p class="text-[10px] text-slate-500 leading-relaxed italic"><b>Persetujuan Penggunaan Data:</b> Saya menyetujui bahwa data yang saya isi akan digunakan untuk keperluan pendaftaran dan pelayanan medis di Ponkesdes Landungsari sesuai ketentuan yang berlaku.</p>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-toska-dark hover:bg-[#005555] text-white font-bold py-4 rounded-2xl shadow-lg transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    Daftarkan Sekarang
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // GANTI DENGAN URL WEB APP KAMU!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyWjbURea1ztABc4xAmjpT4hF0ikD8aRMoe8yRF72II4EshoWFpfu3YehkmWjOeVGjh/exec';
+        const form = document.getElementById('pendaftaranForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Validasi Sederhana
+            const nik = document.getElementById('nik').value;
+            const hp = document.getElementById('hp').value;
+
+            if (nik.length !== 16) {
+                Swal.fire('Opps!', 'NIK harus 16 digit ya, Tuan Muda.', 'warning');
+                return;
+            }
+            if (!hp.startsWith('08') || hp.length < 10) {
+                Swal.fire('Opps!', 'Nomor HP harus valid (mulai 08).', 'warning');
+                return;
+            }
+
+            // Animasi Loading
+            Swal.fire({
+                title: 'Sedang Memproses...',
+                html: 'Mohon tunggu sebentar, data sedang dikirim.',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading() }
+            });
+
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Data pendaftaran Ponkesdes Landungsari sudah masuk.',
+                    confirmButtonColor: '#006969'
+                });
+                form.reset();
+            })
+            .catch(error => {
+                Swal.fire('Gagal!', 'Terjadi kesalahan koneksi.', 'error');
+                console.error('Error!', error.message);
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.classList.remove('opacity-50');
+            });
+        });
+    </script>
+    <div class="mt-8 text-center px-6">
+    <a href="https://maps.app.goo.gl/U27JsYthsaxECCam6" 
+       target="_blank" 
+       class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-lg text-[11px] font-bold text-slate-600 shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        PETUNJUK LOKASI PONKESDES
+    </a>
+</div>
+    <footer class="mt-12 pb-10 text-center border-t border-slate-100 pt-8 px-6">
+        <p class="text-[11px] font-extrabold text-slate-700 uppercase tracking-widest mb-3">
+            © 2026 Ponkesdes Landungsari
+        </p>
+        
+        <div class="flex flex-col gap-2">
+            <p class="text-[10px] text-slate-500 leading-normal">
+                Dibuat dan dikembangkan oleh 
+                <span class="text-toska-dark font-bold">Abhista Arlentino Frisnatan</span> 
+                <br>
+                <span class="font-medium text-slate-400">Siswa SMK Telkom Malang</span>
+            </p>
+            
+            <p class="text-[9px] text-slate-300 italic max-w-xs mx-auto leading-relaxed pt-2 border-t border-slate-50">
+                Sistem ini merupakan inisiatif digital mandiri untuk membantu pelayanan publik di wilayah Landungsari, Malang. 
+                Data pasien dikelola langsung oleh pihak medis setempat.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
